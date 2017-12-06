@@ -1,0 +1,46 @@
+schema {
+    query: Query
+}
+
+type Query{
+    allNotification (filter: NotifFilter) : [Notification]
+    notification(id: String): Notification
+}
+
+type Notification{
+    id: String
+    correlationId: String
+    recordLocator: String
+    requestedAt: String
+    dispStatus: String
+    totalCheckedBagCount: String
+    mishandledBagCount: String
+    notificationStatus: String
+    incidentId: String
+    flightId : String
+    notificationType: String
+    dispositions : [Disposition]
+}
+
+type Disposition{
+    id: String
+    notificationId: String
+    disposition: String
+    channel: String
+    deliveredDate: String
+    contactInfo: String
+    recordLocator: String
+    firstName: String
+    lastName: String
+    aAdvantage: String
+    phoneType: String
+    notification: Notification!
+}
+
+input NotifFilter {
+  channel: String
+  notificationType: String
+  deliveredDate: String
+}
+
+
